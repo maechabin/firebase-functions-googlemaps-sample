@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cloud Functions Sample</title>
+  </head>
+  <body>
+    <script>
+      fetch(
+        'http://localhost:5001/maps-sample-a803c/us-central1/geocoding',
+      )
+        .then(res => {
+          return res.json();
+        })
+        .then(res => {
+          console.log(JSON.stringify(res));
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>
