@@ -1,9 +1,11 @@
 import * as functions from 'firebase-functions';
 import * as Cors from 'cors';
+import { GOOGLE_MAPS_KEY } from '../constants';
+
 const cors = Cors();
 
-const googleMapsClient = require('@google/maps').createClient({
-  key: 'google maps key'
+const googleMapsClient: GoogleMapsClient = createClient({
+  key: GOOGLE_MAPS_KEY,
 });
 
 // Start writing Firebase Functions
