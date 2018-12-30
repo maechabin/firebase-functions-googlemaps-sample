@@ -86,6 +86,26 @@ export const distanceMatrix: functions.HttpsFunction = functions.https.onRequest
           cors(request, response, () => {
             response.status(200).send({ results: res.json });
           });
+/**
+ * Elevation
+ */
+export const elevation: functions.HttpsFunction = functions.https.onRequest(
+  (request: functions.Request, response: functions.Response): void => {
+    const locations = (request.query && request.query.origin) || [111, 111];
+
+    googleMapsClient.elevation(
+      {
+        locations,
+      },
+      (err, res) => {
+        if (!err) {
+          cors(
+            request,
+            response,
+            (): void => {
+              response.status(200).send({ results: res.json });
+            },
+          );
         }
       },
     );
