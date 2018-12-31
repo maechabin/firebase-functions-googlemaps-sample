@@ -57,9 +57,13 @@ export const directions: functions.HttpsFunction = functions.https.onRequest(
       },
       (err, res) => {
         if (!err) {
-          cors(request, response, () => {
-            response.status(200).send({ results: res.json });
-          });
+          cors(
+            request,
+            response,
+            (): void => {
+              response.status(200).send({ results: res.json });
+            },
+          );
         }
       },
     );
@@ -83,9 +87,19 @@ export const distanceMatrix: functions.HttpsFunction = functions.https.onRequest
       },
       (err, res) => {
         if (!err) {
-          cors(request, response, () => {
-            response.status(200).send({ results: res.json });
-          });
+          cors(
+            request,
+            response,
+            (): void => {
+              response.status(200).send({ results: res.json });
+            },
+          );
+        }
+      },
+    );
+  },
+);
+
 /**
  * Elevation
  */
